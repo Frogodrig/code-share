@@ -1,4 +1,3 @@
-const { ErrorResponse } = require('@remix-run/router');
 const express = require('express');
 const app = express();
 const http = require('http');
@@ -50,7 +49,7 @@ io.on('connection', (socket) => {
         });
     })
 
-    // For auto-sync on firt load
+    // For auto-sync on first load
     socket.on(ACTIONS.SYNC_CODE, ({socketId, code}) => {
         io.to(socketId).emit(ACTIONS.CODE_CHANGE, {
             code,
